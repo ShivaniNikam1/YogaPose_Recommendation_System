@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Pose Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #edecec;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .recommendations {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .recommendations li {
+            list-style-type: none;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .recommendations img {
+            width: 350px;
+            height: 280px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .recommendations p {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Yoga Pose Recommendations</h1>
+    {% if data %}
+    <div class="recommendations">
+        <ul>
+            {% for item in data %}
+            <li>
+                <img src="{{ item.image }}" alt="{{ item.pose }}">
+                <p>{{ item.pose }}</p>
+            </li>
+            {% if loop.index % 3 == 0 %} {# Add line break after every 3rd item #}
+        </ul>
+        <ul>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <a href="/">Go back to homepage</a>
+</body>
+
+</html>
